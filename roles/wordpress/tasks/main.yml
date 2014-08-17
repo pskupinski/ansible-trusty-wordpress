@@ -1,0 +1,9 @@
+---
+- name: create place to house wordpress code
+  file: state=directory path=/var/www/wordpress owner=www-data group=www-data mode=0755
+- name: deploy code
+  synchronize: src="{{ src_dir }}/" dest=/var/www/wordpress rsync_opts=--exclude=.git
+# TODO: templated wp-config.php
+# TODO: I don't think this should be necessary.
+- name: ensure permissions are correct
+  file: state=directory recurse=yes path=/var/www/wordpress owner=www-data group=www-data mode=0755
