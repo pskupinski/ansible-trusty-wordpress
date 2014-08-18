@@ -6,6 +6,6 @@ $ ansible-playbook site.yml --extra-vars "src_dir=/home/somebody/git/site server
 ```
 
 TODO:
-* Master-slave replication (ex: master in sf, slave in london)
+* SSL cert deployment
 * Task for backing up mysql
 * Task for loading mysql from backup
