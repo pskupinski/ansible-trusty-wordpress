@@ -2,9 +2,9 @@
 - name: Install nginx
   apt: name=nginx
 - name: Copy nginx configs
-  template: src=wordpress.conf dest=/etc/nginx/sites-available/wordpress
+  template: src=wordpress.conf dest="/etc/nginx/sites-available/{{ server_hostname }}"
 - name: Enable site
-  file: src=/etc/nginx/sites-available/wordpress  state=link path=/etc/nginx/sites-enabled/wordpress
+  file: src="/etc/nginx/sites-available/{{ server_hostname }}" state=link path="/etc/nginx/sites-enabled/{{ server_hostname }}"
   notify: reload nginx
 - name: Disable default configuration
   file: path=/etc/nginx/sites-enabled/default state=absent
