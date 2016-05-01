@@ -1,6 +1,10 @@
 ---
 - name: Install nginx
   apt: name=nginx
+- name: Load SSL certificate
+  synchronize: src="{{ ssl_certificate_pem }}" dest="/etc/nginx/{{ server_hostname }}.pem"
+- name: Load SSL certificate key
+  synchronize: src="{{ ssl_certificate_key_pem }}" dest="/etc/nginx/{{ server_hostname }}_key.pem"
 - name: Copy nginx configs
   template: src=wordpress.conf dest="/etc/nginx/sites-available/{{ server_hostname }}"
 - name: Enable site
