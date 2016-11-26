@@ -3,7 +3,7 @@
   remote_user: root
   roles:
     - common
-    - mysql
+    - mariadb
     - wordpress
     - php-fpm
     - nginx

@@ -1,0 +1,3 @@
+---
+- name: mariadb
+  apt: name=mariadb-server-10.0
