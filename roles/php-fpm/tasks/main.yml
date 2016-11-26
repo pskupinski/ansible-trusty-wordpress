@@ -2,15 +2,15 @@
 - name: Install php-fpm
   apt: name={{ item }}
   with_items:
-    - php5-fpm
-    - php5-gd
-    - php5-mysql
-    - php5-curl
+    - php-fpm
+    - php-gd
+    - php-mysql
+    - php-curl
 - name: Set up /var/run/php-fpm
   file: state=directory path=/var/run/php-fpm owner=www-data group=www-data
 - name: Copy configuration from template for php-fpm
-  template: src=wordpress.conf dest="/etc/php5/fpm/pool.d/{{ server_hostname }}.conf"
+  template: src=wordpress.conf dest="/etc/php/7.0/fpm/pool.d/{{ server_hostname }}.conf"
   notify: restart php-fpm
 - name: Remove default pool
-  file: path=/etc/php5/fpm/pool.d/www.conf state=absent
+  file: path=/etc/php/7.0/fpm/pool.d/www.conf state=absent
   notify: restart php-fpm
