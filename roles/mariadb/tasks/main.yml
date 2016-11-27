@@ -1,3 +1,11 @@
 ---
-- name: mariadb
-  apt: name=mariadb-server-10.0
+- name: add mariadb foundation apt key
+  apt_key: id=F1656F24C74CD1D8 keyserver=keyserver.ubuntu.com
+- name: add mariadb server 10.1 repo
+  apt_repository: repo='deb [arch=amd64,i386,ppc64el] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu xenial main' state=present
+- name: update package list
+  apt: update_cache=yes
+- name: install mariadb 10.1
+  apt:
+    name: mariadb-server-10.1
+    state: latest

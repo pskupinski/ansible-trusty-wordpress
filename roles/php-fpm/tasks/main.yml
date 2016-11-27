@@ -2,10 +2,11 @@
 - name: Install php-fpm
   apt: name={{ item }}
   with_items:
-    - php-fpm
-    - php-gd
-    - php-mysql
-    - php-curl
+    - php7.0-fpm
+    - php7.0-gd
+    - php7.0-mysql
+    - php7.0-curl
+    - php7.0-xml
 - name: Set up /var/run/php-fpm
   file: state=directory path=/var/run/php-fpm owner=www-data group=www-data
 - name: Copy configuration from template for php-fpm

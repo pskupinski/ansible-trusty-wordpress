@@ -1,5 +1,10 @@
 ---
-- name: update
-  apt: update_cache=yes
+# Bootstrap instance with python 2.7
+- name: apt-get update
+  raw: apt-get update -qq
+- name: Install python 2.7
+  raw: apt-get install -qq python
+- name: Gather facts
+  setup:
 - name: upgrade
-  apt: upgrade=safe
+  apt: upgrade=dist
